@@ -1,0 +1,19 @@
+
+Package.json is a sample json file for a Unity package.
+
+You can use it to install the corresponding package by choosing
+"Import package from disk" from the Package Manager's + menu in the top left.
+
+Git-amend's YouTube video shows this as a way to quickly import your own
+tools or code from somewwhere on Github into your project.
+This can also be done via a method similar to Setup.InstallOpenSource() in
+the /My Tools/Editor folder, which adds a command in the Tools/Setup menu
+in Unity.
+
+He covers this at the end of this video:
+https://www.youtube.com/watch?v=eR-AGr5nKEU&list=PLnJJ5frTPwRNdyRAD4oBtG1eUVBuj2h1O&index=5
+
+NOTE: If the json file is somewhere inside your asset folder, it will cause an error
+	  when you do this, but he shows it still getting imported ok, though recommends to
+	  place this and your common tools code such as this \My tools\ folder somwhere outside
+	  your project folder. Then the tools code has to be imported too, of course.
