@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 [SelectionBase]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IKitchenObjectParent
 {
     public static Player Instance { get; private set; }
 
@@ -23,11 +23,13 @@ public class Player : MonoBehaviour
     [SerializeField] [Min(0f)] private float _MoveSpeed = 7f;
     [SerializeField] private GameInput _GameInput;
     [SerializeField] private LayerMask _CountersLayerMask;
+    [SerializeField] private Transform _KitchenObjectHoldPoint;
 
 
     private bool _IsWalking;
     private Vector3 _LastInputDir;
     private ClearCounter _SelectedCounter;
+    private KitchenObject _KitchenObject;
 
 
 
@@ -47,7 +49,7 @@ public class Player : MonoBehaviour
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
         if (_SelectedCounter != null)
-            _SelectedCounter.Interact();
+            _SelectedCounter.Interact(this);
     }
 
     private void Update()
@@ -153,7 +155,32 @@ public class Player : MonoBehaviour
         });
     }
 
+    public Transform GetKitchenObjectFollowTransform()
+    {
+        return _KitchenObjectHoldPoint;
+    }
+
+    public void SetKitchenObject(KitchenObject kitchenObject)
+    {
+        _KitchenObject = kitchenObject;
+    }
+
+    public KitchenObject GetKitchenObject()
+    {
+        return _KitchenObject;
+    }
+
+    public void ClearKitchenObject()
+    {
+        _KitchenObject = null;
+    }
+
+    public bool HasKitchenObject()
+    {
+        return _KitchenObject != null;
+    }
 
 
     public bool IsWalking() { return _IsWalking; }
+
 }

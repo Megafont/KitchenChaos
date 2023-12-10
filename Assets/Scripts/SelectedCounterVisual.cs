@@ -33,4 +33,5 @@ public class SelectedCounterVisual : MonoBehaviour
     {
         _VisualGameObject.SetActive(false);
     }
+
 }

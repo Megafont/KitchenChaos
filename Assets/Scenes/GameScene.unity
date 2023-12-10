@@ -591,6 +591,37 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &442265177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442265178}
+  m_Layer: 0
+  m_Name: KitchenObjectHoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &442265178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442265177}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1400659700}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479111568 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3294758251327466535, guid: 1c5dda3c7cd3cf742afcade5419faeab,
@@ -698,6 +729,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2888252729220671831, guid: e4109551e8986c446aee4fae1b85e444,
+        type: 3}
+      propertyPath: _Testing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888252729220671831, guid: e4109551e8986c446aee4fae1b85e444,
+        type: 3}
+      propertyPath: _KitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 383d3e4b28f1cd142a0179363e2a02f6,
+        type: 2}
+    - target: {fileID: 2888252729220671831, guid: e4109551e8986c446aee4fae1b85e444,
+        type: 3}
+      propertyPath: _SecondClearCounter
+      value: 
+      objectReference: {fileID: 1886763072}
     - target: {fileID: 3707404429915320008, guid: e4109551e8986c446aee4fae1b85e444,
         type: 3}
       propertyPath: m_Name
@@ -792,6 +839,7 @@ MonoBehaviour:
   _CountersLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  _KitchenObjectHoldPoint: {fileID: 442265178}
 --- !u!4 &1400659700
 Transform:
   m_ObjectHideFlags: 0
@@ -806,6 +854,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1728296952}
+  - {fileID: 442265178}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1728296951
@@ -899,6 +948,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Player: {fileID: 1400659699}
+--- !u!114 &1886763072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2888252729220671831, guid: e4109551e8986c446aee4fae1b85e444,
+    type: 3}
+  m_PrefabInstance: {fileID: 1585197808755945731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eac0a616cf3d584683fa4d7f3dc8b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2024311862
 GameObject:
   m_ObjectHideFlags: 3
@@ -1002,6 +1063,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2888252729220671831, guid: e4109551e8986c446aee4fae1b85e444,
+        type: 3}
+      propertyPath: _TomatoPrefab
+      value: 
+      objectReference: {fileID: 8824132079057423269, guid: a0e177c0b801c6040a9359832dabcb8b,
+        type: 3}
+    - target: {fileID: 2888252729220671831, guid: e4109551e8986c446aee4fae1b85e444,
+        type: 3}
+      propertyPath: _KitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b8a8f4a4dafc1c4f95e5623c843d538,
+        type: 2}
     - target: {fileID: 3707404429915320008, guid: e4109551e8986c446aee4fae1b85e444,
         type: 3}
       propertyPath: m_Name
