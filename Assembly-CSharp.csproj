@@ -60,24 +60,25 @@
     <Analyzer Include="F:\Unity\2022.3.14f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\SelectedCounterVisual.cs" />
+    <Compile Include="Assets\Scripts\Counters\BaseCounter.cs" />
+    <Compile Include="Assets\Scripts\Counters\ContainerCounterVisual.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\CuttingRecipeSO.cs" />
     <Compile Include="Assets\Scripts\ProgressBarUI.cs" />
-    <Compile Include="Assets\Scripts\ContainerCounter.cs" />
-    <Compile Include="Assets\Scripts\KitchenObjectSO.cs" />
+    <Compile Include="Assets\Scripts\Counters\TrashCounter.cs" />
+    <Compile Include="Assets\Scripts\Counters\SelectedCounterVisual.cs" />
     <Compile Include="Assets\Scripts\LookAtCamera.cs" />
+    <Compile Include="Assets\Scripts\Counters\ClearCounter.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\KitchenObjectSO.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimator.cs" />
+    <Compile Include="Assets\Scripts\Counters\ContainerCounter.cs" />
+    <Compile Include="Assets\Scripts\Counters\CuttingCounter.cs" />
     <Compile Include="Assets\Scripts\IKitchenObjectParent.cs" />
     <Compile Include="Assets\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\GameInput.cs" />
-    <Compile Include="Assets\Scripts\ContainerCounterVisual.cs" />
-    <Compile Include="Assets\Scripts\ClearCounter.cs" />
     <Compile Include="Assets\Scripts\KitchenObject.cs" />
-    <Compile Include="Assets\Scripts\BaseCounter.cs" />
-    <Compile Include="Assets\Scripts\CuttingCounter.cs" />
-    <Compile Include="Assets\Scripts\CuttingRecipeSO.cs" />
-    <Compile Include="Assets\Scripts\CuttingCounterVisual.cs" />
+    <Compile Include="Assets\Scripts\Counters\CuttingCounterVisual.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_Assets\KitchenChaos_COMPLETE_PROJECT.txt" />
