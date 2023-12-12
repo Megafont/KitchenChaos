@@ -20,7 +20,8 @@ public class BaseCounter : MonoBehaviour, IKitchenObjectParent
 
     public virtual void InteractAlternate(Player player)
     {
-        Debug.LogError("BaseCounter.InteractAlternate()");
+        // This debug code is commented out now since not all counters override this function.
+        //Debug.LogError("BaseCounter.InteractAlternate()");
     }
 
     public Transform GetKitchenObjectFollowTransform()
