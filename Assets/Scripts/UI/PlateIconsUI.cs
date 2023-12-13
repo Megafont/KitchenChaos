@@ -30,7 +30,8 @@ public class PlateIconsUI : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            if (child == _IconTemplate) continue;
+            if (child == _IconTemplate) 
+                continue;
 
             Destroy(child.gameObject);
         }
