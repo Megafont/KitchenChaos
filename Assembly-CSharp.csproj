@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Counters\BaseCounter.cs" />
     <Compile Include="Assets\Scripts\Counters\ContainerCounterVisual.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\CuttingRecipeSO.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\RecipeListSO.cs" />
     <Compile Include="Assets\Scripts\PlateIconsSingleUI.cs" />
     <Compile Include="Assets\Scripts\ProgressBarUI.cs" />
     <Compile Include="Assets\Scripts\IHasProgress.cs" />
@@ -89,7 +90,9 @@
     <Compile Include="Assets\Scripts\Counters\PlatesCounter.cs" />
     <Compile Include="Assets\Scripts\GameInput.cs" />
     <Compile Include="Assets\Scripts\KitchenObject.cs" />
+    <Compile Include="Assets\Scripts\DeliveryManager.cs" />
     <Compile Include="Assets\Scripts\Counters\PlatesCounterVisual.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\RecipeSO.cs" />
     <Compile Include="Assets\Scripts\Counters\CuttingCounterVisual.cs" />
   </ItemGroup>
   <ItemGroup>
