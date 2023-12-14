@@ -11,6 +11,8 @@ public class DeliveryManager : MonoBehaviour
 {
     public event EventHandler OnRecipeSpawned;
     public event EventHandler OnRecipeCompleted;
+    public event EventHandler OnRecipeSuccess;
+    public event EventHandler OnRecipeFailed;
 
 
     public static DeliveryManager Instance { get; private set; }
@@ -49,7 +51,7 @@ public class DeliveryManager : MonoBehaviour
         }
     }
 
-    public void DeliverRecipe(PlateKitchenObject plateKitchenObject)
+    public void DeliverRecipe(DeliveryCounter sender, PlateKitchenObject plateKitchenObject)
     {
         for (int i = 0; i < _WaitingRecipeSOList.Count; i++)
         {
@@ -88,7 +90,8 @@ public class DeliveryManager : MonoBehaviour
                     // Player delivered a waiting recipe!
                     _WaitingRecipeSOList.RemoveAt(i);
 
-                    OnRecipeCompleted(this, EventArgs.Empty);
+                    OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
+                    OnRecipeSuccess?.Invoke(sender, EventArgs.Empty);
 
                     return;
                 }
@@ -98,6 +101,7 @@ public class DeliveryManager : MonoBehaviour
 
         // No matches found!
         // The player did not deliver a correct recipe.
+        OnRecipeFailed?.Invoke(sender, EventArgs.Empty);
     }
 
     public List<RecipeSO> GetWaitingRecipeSOList()

@@ -78,6 +78,8 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\KitchenObjectSO.cs" />
     <Compile Include="Assets\Scripts\Counters\StoveCounter.cs" />
+    <Compile Include="Assets\Scripts\Counters\StoveCounterSound.cs" />
+    <Compile Include="Assets\Scripts\PlayerSounds.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimator.cs" />
     <Compile Include="Assets\Scripts\Counters\ContainerCounter.cs" />
@@ -88,10 +90,12 @@
     <Compile Include="Assets\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Counters\PlatesCounter.cs" />
     <Compile Include="Assets\Scripts\GameInput.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\KitchenObject.cs" />
     <Compile Include="Assets\Scripts\DeliveryManager.cs" />
     <Compile Include="Assets\Scripts\Counters\PlatesCounterVisual.cs" />
     <Compile Include="Assets\Scripts\UI\PlateIconsSingleUI.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\AudioClipRefsSO.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\RecipeSO.cs" />
     <Compile Include="Assets\Scripts\Counters\CuttingCounterVisual.cs" />
     <Compile Include="Assets\Scripts\UI\DeliveryManagerUI.cs" />
