@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\PlateCompleteVisual.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\KitchenObjectSO.cs" />
+    <Compile Include="Assets\Scripts\UI\GamePlayingClockUI.cs" />
     <Compile Include="Assets\Scripts\Counters\StoveCounter.cs" />
     <Compile Include="Assets\Scripts\Counters\StoveCounterSound.cs" />
     <Compile Include="Assets\Scripts\PlayerSounds.cs" />
@@ -96,10 +97,13 @@
     <Compile Include="Assets\Scripts\Counters\PlatesCounterVisual.cs" />
     <Compile Include="Assets\Scripts\UI\PlateIconsSingleUI.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\AudioClipRefsSO.cs" />
+    <Compile Include="Assets\Scripts\UI\GameStartCoutndownUI.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\RecipeSO.cs" />
+    <Compile Include="Assets\Scripts\UI\GameOverUI.cs" />
     <Compile Include="Assets\Scripts\Counters\CuttingCounterVisual.cs" />
     <Compile Include="Assets\Scripts\UI\DeliveryManagerUI.cs" />
     <Compile Include="Assets\Scripts\UI\ProgressBarUI.cs" />
+    <Compile Include="Assets\Scripts\KitchenGameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
