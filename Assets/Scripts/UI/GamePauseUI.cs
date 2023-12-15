@@ -34,7 +34,8 @@ public class GamePauseUI : MonoBehaviour
 
     private void OnOptionsClicked()
     {
-        OptionsUI.Instance.Show();
+        Hide();
+        OptionsUI.Instance.Show(Show); // Pass in this class' Show() method.
     }
 
     private void OnMainMenuClicked()
@@ -55,6 +56,8 @@ public class GamePauseUI : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
+
+        _ResumeButton.Select();
     }
 
     private void Hide()

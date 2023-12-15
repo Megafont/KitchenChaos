@@ -68,8 +68,8 @@
     <Compile Include="Assets\Scripts\Counters\ContainerCounterVisual.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\CuttingRecipeSO.cs" />
     <Compile Include="Assets\Scripts\UI\GamePauseUI.cs" />
-    <Compile Include="Assets\Scripts\ScriptableObjects\RecipeListSO.cs" />
     <Compile Include="Assets\Scripts\ResetStaticDataManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\RecipeListSO.cs" />
     <Compile Include="Assets\Scripts\LoaderCallback.cs" />
     <Compile Include="Assets\Scripts\IHasProgress.cs" />
     <Compile Include="Assets\Scripts\Counters\TrashCounter.cs" />
