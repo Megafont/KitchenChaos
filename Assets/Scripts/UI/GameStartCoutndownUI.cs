@@ -8,8 +8,21 @@ using UnityEditor.Search;
 
 public class GameStartCoutndownUI : MonoBehaviour
 {
+    private const string NUMBER_POPUP = "CountdownToStartPopup";
+
+
     [SerializeField] private TextMeshProUGUI _CountdownText;
 
+
+    private Animator _Animator;
+    private int _PreviousCountdownNumber;
+
+
+
+    private void Awake()
+    {
+        _Animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -20,7 +33,20 @@ public class GameStartCoutndownUI : MonoBehaviour
 
     private void Update()
     {
-        _CountdownText.text = Mathf.Ceil(KitchenGameManager.Instance.GetCountdownToStartTimer()).ToString();   
+        int countdownNumber = Mathf.CeilToInt(KitchenGameManager.Instance.GetCountdownToStartTimer());
+        _CountdownText.text = countdownNumber.ToString();
+
+        if (_PreviousCountdownNumber != countdownNumber)
+        {
+            if (countdownNumber > 0)
+            {
+                _PreviousCountdownNumber = countdownNumber;
+                _Animator.SetTrigger(NUMBER_POPUP);
+            }
+
+            SoundManager.Instance.PlayCountdownSound();
+        }
+                                
     }
 
     private void Instance_OnStateChanged(object sender, System.EventArgs e)

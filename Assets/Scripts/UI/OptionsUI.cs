@@ -48,6 +48,9 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _GamepadPauseText;
 
     [Space(10)]
+    [SerializeField] private Button _ResetAllBindingsButton;
+
+    [Space(10)]
     [SerializeField] private Transform _PressToRebindKeyTransform;
 
 
@@ -71,9 +74,11 @@ public class OptionsUI : MonoBehaviour
         _InteractAltButton.onClick.AddListener(() => { RebindBinding(GameInput.Bindings.Interact_Alt); });
         _PauseButton.onClick.AddListener(() => { RebindBinding(GameInput.Bindings.Pause); });
 
-        _GamepadInteractButton.onClick.AddListener(() => { RebindBinding(GameInput.Bindings.Interact); });
-        _GamepadInteractAltButton.onClick.AddListener(() => { RebindBinding(GameInput.Bindings.Interact_Alt); });
-        _GamepadPauseButton.onClick.AddListener(() => { RebindBinding(GameInput.Bindings.Pause); });
+        _GamepadInteractButton.onClick.AddListener(() => { RebindBinding(GameInput.Bindings.Gamepad_Interact); });
+        _GamepadInteractAltButton.onClick.AddListener(() => { RebindBinding(GameInput.Bindings.Gamepad_Interact_Alt); });
+        _GamepadPauseButton.onClick.AddListener(() => { RebindBinding(GameInput.Bindings.Gamepad_Pause); });
+
+        _ResetAllBindingsButton.onClick.AddListener(OnResetAllBindingsClicked);
     }
 
     private void Start()
@@ -100,6 +105,12 @@ public class OptionsUI : MonoBehaviour
     private void OnMusicClicked()
     {
         MusicManager.Instance.ChangeVolume();
+        UpdateVisuals();
+    }
+
+    public void OnResetAllBindingsClicked()
+    {
+        GameInput.Instance.ResetAllBindings();
         UpdateVisuals();
     }
 

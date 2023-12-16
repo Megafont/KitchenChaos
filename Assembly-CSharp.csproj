@@ -65,7 +65,9 @@
     <Compile Include="Assets\Scripts\UI\MainMenuUI.cs" />
     <Compile Include="Assets\Scripts\UI\DeliveryManagerSingleUI.cs" />
     <Compile Include="Assets\Scripts\Counters\BaseCounter.cs" />
+    <Compile Include="Assets\Scripts\UI\DeliveryResultUI.cs" />
     <Compile Include="Assets\Scripts\Counters\ContainerCounterVisual.cs" />
+    <Compile Include="Assets\Scripts\UI\StoveBurningFlashingBarUI.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\CuttingRecipeSO.cs" />
     <Compile Include="Assets\Scripts\UI\GamePauseUI.cs" />
     <Compile Include="Assets\Scripts\ResetStaticDataManager.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Assets\Scripts\Counters\StoveCounter.cs" />
     <Compile Include="Assets\Scripts\Counters\StoveCounterSound.cs" />
     <Compile Include="Assets\Scripts\PlayerSounds.cs" />
+    <Compile Include="Assets\Scripts\UI\StoveBurningWarningUI.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimator.cs" />
     <Compile Include="Assets\Scripts\Counters\ContainerCounter.cs" />
@@ -106,6 +109,7 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\AudioClipRefsSO.cs" />
     <Compile Include="Assets\Scripts\UI\GameStartCoutndownUI.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\RecipeSO.cs" />
+    <Compile Include="Assets\Scripts\UI\TutorialUI.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverUI.cs" />
     <Compile Include="Assets\Scripts\Counters\CuttingCounterVisual.cs" />
     <Compile Include="Assets\Scripts\UI\DeliveryManagerUI.cs" />

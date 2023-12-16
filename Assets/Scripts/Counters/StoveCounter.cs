@@ -8,6 +8,11 @@ using static CuttingCounter;
 
 public class StoveCounter : BaseCounter, IHasProgress
 {
+    // Once the meat is cooked, this much progress toward burning must be made before
+    // the burning warning appears.
+    public const float STOVE_BURNING_WARNING_TIME = 0.5f;
+
+
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
     public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
     public class OnStateChangedEventArgs: EventArgs
@@ -218,5 +223,10 @@ public class StoveCounter : BaseCounter, IHasProgress
         }
 
         return null;
+    }
+
+    public bool IsFried()
+    {
+        return _State == State.Fried;
     }
 }
