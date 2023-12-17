@@ -44,6 +44,19 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
         GameInput.Instance.OnInteractAlternateAction += _GameInput_OnInteractAlternateAction;
     }
 
+    private void Update()
+    {
+        // Run the update code only if this object is the local player.
+        if (!IsOwner)
+        {
+            return;
+        }
+
+
+        HandleMovement();
+        HandleInteractions();
+    }
+
     private void _GameInput_OnInteractAlternateAction(object sender, EventArgs e)
     {
         if (!KitchenGameManager.Instance.IsGamePlaying())
@@ -60,12 +73,6 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
 
         if (_SelectedCounter != null)
             _SelectedCounter.Interact(this);
-    }
-
-    private void Update()
-    {
-        HandleMovement();
-        HandleInteractions();
     }
 
     private void HandleInteractions()

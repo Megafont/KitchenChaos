@@ -19,6 +19,8 @@ public class TestingNetcodeUI : MonoBehaviour
         _StartAsClientButton.onClick.AddListener(OnStartAsClientClicked);
         _StartAsHostButton.onClick.AddListener(OnStartAsHostClicked);
         _StartAsServerButton.onClick.AddListener(OnStartAsServerClicked);
+
+        _StartAsClientButton.Select();
     }
 
     private void OnStartAsClientClicked()

@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\UI\StoveBurningWarningUI.cs" />
     <Compile Include="Assets\Scripts\UI\OptionsUI.cs" />
     <Compile Include="Assets\Scripts\Counters\StoveCounterVisual.cs" />
+    <Compile Include="Assets\Scripts\ClientNetworkTransform.cs" />
     <Compile Include="Assets\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\DeliveryManager.cs" />
