@@ -25,6 +25,7 @@ public class TutorialUI : MonoBehaviour
     {
         GameInput.Instance.OnBindingRebind += GameInput_OnBindingRebind;
         KitchenGameManager.Instance.OnStateChanged += KitchenGameManager_OnStateChanged;
+
         UpdateVisuals();
 
         Show();

@@ -1,4 +1,11 @@
 
+NOTE: I added assembly references in the MyTools subfolders. The editor scripts were causing my build
+	  of Kitchen Chaos to fail. I ended up finding the solution to put the editor scripts in
+	  an editor only assembly. I also found out that if there are editor scripts in some other
+	  folder in the project, you can add an Assemby Reference asset in that folder, which I
+	  believe adds them to the referenced assembly.
+
+
 Package.json is a sample json file for a Unity package.
 
 You can use it to install the corresponding package by choosing

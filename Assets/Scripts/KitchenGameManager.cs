@@ -14,7 +14,7 @@ public class KitchenGameManager : MonoBehaviour
     public event EventHandler OnGameUnpaused;
 
 
-    [SerializeField] private float _GamePlayingTimerMax = 10f;
+    [SerializeField] private float _GamePlayingTimerMax = 300f;
         
         
     private enum State
@@ -27,7 +27,7 @@ public class KitchenGameManager : MonoBehaviour
 
 
     private State _State;
-    private float _CountdownToStartTimer = 3f;
+    private float _CountdownToStartTimer = 1f; // DEBUG: CHANGE BACK TO 3 WHEN DONE TESTING!
     private float _GamePlayingTimer;
     private bool _IsGamePaused;
 
@@ -44,6 +44,18 @@ public class KitchenGameManager : MonoBehaviour
     {
         GameInput.Instance.OnPauseAction += GameInput_OnPauseAction;
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
+
+        // DEBUG: TRIGGER TO START GAME AUTOMATICALLY
+        StartCoroutine(DEBUG_TRIGGER());
+    }
+
+    // REMOVE THIS FUNCTION
+    private IEnumerator DEBUG_TRIGGER()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        _State = State.CountdownToStart;
+        OnStateChanged?.Invoke(this, EventArgs.Empty);
     }
 
     private void GameInput_OnInteractAction(object sender, EventArgs e)
