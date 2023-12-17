@@ -103,6 +103,7 @@
     <Compile Include="Assets\Scripts\Counters\ClearCounter.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\KitchenObjectSO.cs" />
     <Compile Include="Assets\Scripts\UI\GamePlayingClockUI.cs" />
+    <Compile Include="Assets\Scripts\ClientNetworkAnimator.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimator.cs" />
     <Compile Include="Assets\Scripts\Counters\ContainerCounter.cs" />
