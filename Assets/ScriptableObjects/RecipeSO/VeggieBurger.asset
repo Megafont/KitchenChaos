@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 376759902e11bde4a9bc457898508e19, type: 3}
+  m_Name: VeggieBurger
+  m_EditorClassIdentifier: 
+  KitchenObjectSOList:
+  - {fileID: 11400000, guid: a3651cc8796761f4b990617b00a6060d, type: 2}
+  - {fileID: 11400000, guid: 5433494f5d237c744a45459a4e34c885, type: 2}
+  - {fileID: 11400000, guid: 61f9b67a6eb949640a9b63976113362a, type: 2}
+  - {fileID: 11400000, guid: f0cbb3b996f3e074aabf4b5799a0f0d3, type: 2}
+  RecipeName: Veggie Burger
