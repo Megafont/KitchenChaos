@@ -60,16 +60,14 @@ public class SoundManager : MonoBehaviour
         PlaySound(_AudioClipRefsSO.Chop, cuttingCounter.transform.position);
     }
 
-    private void DeliveryManager_OnRecipeFailed(object sender, System.EventArgs e)
+    private void DeliveryManager_OnRecipeFailed(object sender, DeliveryManager.RecipeDeliveredEventHandler e)
     {
-        DeliveryCounter deliveryCounter = sender as DeliveryCounter;
-        PlaySound(_AudioClipRefsSO.DeliveryFail, deliveryCounter.transform.position);
+        PlaySound(_AudioClipRefsSO.DeliveryFail, e.DeliveryCounterPosition);
     }
 
-    private void DeliveryManager_OnRecipeSuccess(object sender, System.EventArgs e)
+    private void DeliveryManager_OnRecipeSuccess(object sender, DeliveryManager.RecipeDeliveredEventHandler e)
     {
-        DeliveryCounter deliveryCounter = sender as DeliveryCounter;
-        PlaySound(_AudioClipRefsSO.DeliverySuccess, deliveryCounter.transform.position);
+        PlaySound(_AudioClipRefsSO.DeliverySuccess, e.DeliveryCounterPosition);
     }
 
     public void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volume = 1f)

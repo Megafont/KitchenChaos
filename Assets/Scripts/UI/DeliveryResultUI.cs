@@ -40,7 +40,7 @@ public class DeliveryResultUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void DeliveryManager_OnRecipeFailed(object sender, System.EventArgs e)
+    private void DeliveryManager_OnRecipeFailed(object sender, DeliveryManager.RecipeDeliveredEventHandler e)
     {
         gameObject.SetActive(true);
 
@@ -51,7 +51,7 @@ public class DeliveryResultUI : MonoBehaviour
         _Animator.SetTrigger(POPUP);
     }
 
-    private void DeliveryManager_OnRecipeSuccess(object sender, System.EventArgs e)
+    private void DeliveryManager_OnRecipeSuccess(object sender, DeliveryManager.RecipeDeliveredEventHandler e)
     {
         gameObject.SetActive(true);
 

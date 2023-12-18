@@ -12,9 +12,13 @@ public class DeliveryManager : NetworkBehaviour
 {
     public event EventHandler OnRecipeSpawned;
     public event EventHandler OnRecipeCompleted;
-    public event EventHandler OnRecipeSuccess;
-    public event EventHandler OnRecipeFailed;
+    public event EventHandler<RecipeDeliveredEventHandler> OnRecipeSuccess;
+    public event EventHandler<RecipeDeliveredEventHandler> OnRecipeFailed;
 
+    public class RecipeDeliveredEventHandler
+    {
+        public Vector3 DeliveryCounterPosition;
+    }
 
     public static DeliveryManager Instance { get; private set; }
 
@@ -109,13 +113,7 @@ public class DeliveryManager : NetworkBehaviour
                 if (plateContentMatchesRecipe)
                 {
                     // Player delivered a waiting recipe!
-                    _SuccessfulRecipeAmount++;
-
-                    _WaitingRecipeSOList.RemoveAt(i);
-
-                    OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
-                    OnRecipeSuccess?.Invoke(sender, EventArgs.Empty);
-
+                    DeliverCorrectRecipeServerRpc(i, sender.transform.position);
                     return;
                 }
             }
@@ -124,7 +122,45 @@ public class DeliveryManager : NetworkBehaviour
 
         // No matches found!
         // The player did not deliver a correct recipe.
-        OnRecipeFailed?.Invoke(sender, EventArgs.Empty);
+        DeliverIncorrectRecipeServerRpc(sender.transform.position);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void DeliverIncorrectRecipeServerRpc(Vector3 deliveryCounterPosition)
+    {
+        DeliverIncorrectRecipeClientRpc(deliveryCounterPosition);
+    }
+
+    [ClientRpc]
+    private void DeliverIncorrectRecipeClientRpc(Vector3 deliveryCounterPosition)
+    {
+
+        OnRecipeFailed?.Invoke(this, new RecipeDeliveredEventHandler
+        {
+            DeliveryCounterPosition = deliveryCounterPosition
+        });
+        
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void DeliverCorrectRecipeServerRpc(int waitingRecipeSOIndex, Vector3 deliveryCounterPosition)    {
+        DeliverCorrectRecipeClientRpc(waitingRecipeSOIndex, deliveryCounterPosition);
+    }
+
+    [ClientRpc]
+    private void DeliverCorrectRecipeClientRpc(int waitingRecipeSOIndex, Vector3 deliveryCounterPosition)
+    {
+        _SuccessfulRecipeAmount++;
+
+        _WaitingRecipeSOList.RemoveAt(waitingRecipeSOIndex);
+
+        OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
+
+
+        OnRecipeSuccess?.Invoke(this, new RecipeDeliveredEventHandler
+        {
+            DeliveryCounterPosition = deliveryCounterPosition
+        }); 
     }
 
     public List<RecipeSO> GetWaitingRecipeSOList()
