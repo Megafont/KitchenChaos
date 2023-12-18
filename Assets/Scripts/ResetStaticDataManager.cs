@@ -11,5 +11,6 @@ public class ResetStaticDataManager : MonoBehaviour
         BaseCounter.ResetStaticData();
         CuttingCounter.ResetStaticData();
         TrashCounter.ResetStaticData();
+        Player.ResetStaticData();
     }
 }
