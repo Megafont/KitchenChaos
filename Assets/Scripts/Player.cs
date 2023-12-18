@@ -220,6 +220,11 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
         return _KitchenObject != null;
     }
 
+    public NetworkObject GetNetworkObject()
+    {
+        return NetworkObject;
+    }
+
 
     public bool IsWalking() { return _IsWalking; }
 

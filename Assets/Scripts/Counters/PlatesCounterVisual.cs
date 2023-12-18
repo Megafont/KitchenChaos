@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+
 using UnityEngine;
 
 
@@ -26,6 +27,7 @@ public class PlatesCounterVisual : MonoBehaviour
 
     private void _PlatesCounter_OnPlateRemoved(object sender, System.EventArgs e)
     {
+        return;
         GameObject plateGameObject = _PlateVisualGameObjectsList[_PlateVisualGameObjectsList.Count - 1];
         _PlateVisualGameObjectsList.Remove(plateGameObject);
         Destroy(plateGameObject);
@@ -33,6 +35,7 @@ public class PlatesCounterVisual : MonoBehaviour
 
     private void _PlatesCounter_OnPlateSpawned(object sender, System.EventArgs e)
     {
+        return;
         Transform plateVisualTransform = Instantiate(_PlateVisualPrefab, _CounterTopPoint);
 
         float plateOffsetY = 0.1f;
