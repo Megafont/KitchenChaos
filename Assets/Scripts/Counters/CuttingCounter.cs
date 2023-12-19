@@ -116,9 +116,10 @@ public class CuttingCounter : BaseCounter, IHasProgress
 
         CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
 
-        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs { ProgressNormalized = (float)_CuttingProgress / cuttingRecipeSO.CuttingProgressMax });
-
-
+        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs 
+        { 
+            ProgressNormalized = (float) _CuttingProgress / cuttingRecipeSO.CuttingProgressMax 
+        });
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -128,7 +129,7 @@ public class CuttingCounter : BaseCounter, IHasProgress
 
         if (_CuttingProgress >= cuttingRecipeSO.CuttingProgressMax)
         {
-            KitchenObjectSO outputKitchenObjectSO = cuttingRecipeSO.Output; //GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
+            KitchenObjectSO outputKitchenObjectSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
 
             KitchenObject.DestroyKitchenObject(GetKitchenObject());
 
