@@ -71,6 +71,13 @@ public class KitchenObject : NetworkBehaviour
         return _KitchenObjectParent;
     }
 
+    /// <summary>
+    /// Destroys this KitchenObject.
+    /// </summary>
+    /// <remarks>
+    /// This function is only called in KitchenGameMultiplayer.DestroyKitchenObjectServerRpc().
+    /// That's because only the server should destroy the object.
+    /// </remarks>
     public void DestroySelf()
     {
 

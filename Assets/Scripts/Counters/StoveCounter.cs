@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using Unity.Netcode;
 using UnityEngine;
 using static CuttingCounter;
@@ -185,9 +186,10 @@ public class StoveCounter : BaseCounter, IHasProgress
                     // Player is holding a plate
                     if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
                     {
-                        GetKitchenObject().DestroySelf();
+                        KitchenObject.DestroyKitchenObject(GetKitchenObject());
 
                         SetStateIdleServerRpc();
+                        ResetStoveTimersServerRpc();
                     }
                 }
             }
@@ -209,10 +211,22 @@ public class StoveCounter : BaseCounter, IHasProgress
         _State.Value = State.Idle;
     }
 
+    /// <summary>
+    /// I added this ServerRpc to fix a problem where the timer stayed visible if you pick up the meat
+    /// before it is done frying or burning.
+    /// </summary>
+    [ServerRpc(RequireOwnership = false)]
+    private void ResetStoveTimersServerRpc()
+    {
+        _FryingTimer.Value = 0f;
+        _BurningTimer.Value = 0f;
+    }
+
     [ServerRpc(RequireOwnership = false)]
     private void InteractLogicPlaceObjectOnCounterServerRpc(int kitchenObjectSOIndex)
     {
-        _FryingTimer.Value = 0f;
+        ResetStoveTimersServerRpc();
+
         _State.Value = State.Frying;
 
         SetFryingRecipeSOClientRpc(kitchenObjectSOIndex);
