@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Counters\StoveCounterSound.cs" />
     <Compile Include="Assets\Scripts\PlayerSounds.cs" />
     <Compile Include="Assets\Scripts\UI\StoveBurningWarningUI.cs" />
+    <Compile Include="Assets\Scripts\UI\ConnectionResponseMessaageUI.cs" />
     <Compile Include="Assets\Scripts\UI\OptionsUI.cs" />
     <Compile Include="Assets\Scripts\Counters\StoveCounterVisual.cs" />
     <Compile Include="Assets\Scripts\ClientNetworkTransform.cs" />
@@ -91,11 +92,13 @@
     <Compile Include="Assets\Scripts\Counters\PlatesCounterVisual.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\AudioClipRefsSO.cs" />
     <Compile Include="Assets\Scripts\UI\TutorialUI.cs" />
+    <Compile Include="Assets\Scripts\UI\ConnectingUI.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverUI.cs" />
     <Compile Include="Assets\Scripts\UI\ProgressBarUI.cs" />
     <Compile Include="Assets\Scripts\KitchenGameManager.cs" />
     <Compile Include="Assets\Scripts\MusicManager.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenuUI.cs" />
+    <Compile Include="Assets\Scripts\UI\TestingLobbyUI.cs" />
     <Compile Include="Assets\Scripts\UI\TestingNetcodeUI.cs" />
     <Compile Include="Assets\Scripts\UI\StoveBurningFlashingBarUI.cs" />
     <Compile Include="Assets\Scripts\UI\GamePauseUI.cs" />
@@ -104,10 +107,12 @@
     <Compile Include="Assets\Scripts\PlateKitchenObject.cs" />
     <Compile Include="Assets\Scripts\UI\HostDisconnectUI.cs" />
     <Compile Include="Assets\Scripts\LookAtCamera.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelectReady.cs" />
     <Compile Include="Assets\Scripts\Counters\ClearCounter.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\KitchenObjectSO.cs" />
     <Compile Include="Assets\Scripts\UI\GamePlayingClockUI.cs" />
     <Compile Include="Assets\Scripts\ClientNetworkAnimator.cs" />
+    <Compile Include="Assets\Scripts\UI\TestingCharacterSelectionUI.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimator.cs" />
     <Compile Include="Assets\Scripts\KitchenGameMultiplayer.cs" />
@@ -120,6 +125,7 @@
     <Compile Include="Assets\Scripts\KitchenObject.cs" />
     <Compile Include="Assets\Scripts\UI\PlateIconsSingleUI.cs" />
     <Compile Include="Assets\Scripts\UI\GameStartCoutndownUI.cs" />
+    <Compile Include="Assets\Scripts\MainMenuCleanup.cs" />
     <Compile Include="Assets\Scripts\FollowTransform.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\RecipeSO.cs" />
     <Compile Include="Assets\Scripts\Counters\CuttingCounterVisual.cs" />

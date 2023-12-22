@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using Unity.Netcode;
 using UnityEngine;
 
@@ -18,8 +19,9 @@ public class KitchenGameManager : NetworkBehaviour
 
 
     [SerializeField] private float _GamePlayingTimerMax = 300f;
+    [SerializeField] private Transform _PlayerPrefab;
         
-        
+
     private enum State
     {
         WaitingToStart,
@@ -67,6 +69,27 @@ public class KitchenGameManager : NetworkBehaviour
         if (IsServer)
         {
             NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
+        }
+    }
+
+    /// <summary>
+    /// This event handler runs when the scene is loaded.
+    /// </summary>
+    /// <remarks>
+    /// NOTE: This event handler is called by NetworkManager.Singleton.SceneManager, not the regular Unity SceneManager.
+    /// </remarks>
+    /// <param name="sceneName"></param>
+    /// <param name="loadSceneMode"></param>
+    /// <param name="clientsCompleted"></param>
+    /// <param name="clientsTimedOut"></param>
+    private void SceneManager_OnLoadEventCompleted(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
+    {
+        // Spawn the players.
+        foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+        {
+            Transform playerTransform = Instantiate(_PlayerPrefab);
+            playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
         }
     }
 
