@@ -38,6 +38,7 @@ public class KitchenGameManager : NetworkBehaviour
     private bool _IsLocalGamePaused;
     private Dictionary<ulong, bool> _PlayerReadyDictionary;
     private Dictionary<ulong, bool> _PlayerPausedDictionary;
+    private bool _AutoTestGamePausedState;
 
 
 
@@ -62,6 +63,22 @@ public class KitchenGameManager : NetworkBehaviour
     {
         _State.OnValueChanged += State_OnValueChanged;
         _IsGamePaused.OnValueChanged += IsGamePaused_OnValueChanged;
+
+        if (IsServer)
+        {
+            NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
+        }
+    }
+
+    /// <summary>
+    /// We are using this event to do an extra check of the game's paused state.
+    /// That way if the only player that's paused leaves the game or disconnects,
+    /// it won't stay paused for the others.
+    /// </summary>
+    /// <param name="clientId"></param>
+    private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
+    {
+        _AutoTestGamePausedState = true;
     }
 
     private void IsGamePaused_OnValueChanged(bool previousValue, bool newValue)
@@ -157,6 +174,16 @@ public class KitchenGameManager : NetworkBehaviour
 
     }
 
+    private void LateUpdate()
+    {
+        if (_AutoTestGamePausedState)
+        {
+            _AutoTestGamePausedState = false;
+
+            TestGamePausedState();
+        }
+    }
+
     private void GameInput_OnPauseAction(object sender, EventArgs e)
     {
         TogglePauseGame();
@@ -180,6 +207,11 @@ public class KitchenGameManager : NetworkBehaviour
     public bool IsGameOver()
     {
         return _State.Value == State.GameOver;
+    }
+
+    public bool IsWaitingToStart()
+    {
+        return _State.Value == State.WaitingToStart;
     }
 
     public float GetGamePlayingTimerNormalized()
@@ -226,6 +258,14 @@ public class KitchenGameManager : NetworkBehaviour
         TestGamePausedState();
     }
 
+    /// <summary>
+    /// Checks if all players are unpaused and updates multiplayer paused state.
+    /// </summary>
+    /// <remarks>
+    /// NOTE: I had a not the server exception being raised by this function accessing the ConnectedClientIds field
+    ///       of the NetworkManager. It turns out this was just caused because while testing I was just stopping the
+    ///       game in the Unity Editor rather than hitting Esc to pause it, and clicking the Main Menu button.
+    /// </remarks>
     private void TestGamePausedState()
     {
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)

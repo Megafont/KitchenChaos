@@ -19,6 +19,45 @@ public class KitchenGameMultiplayer : NetworkBehaviour
         Instance = this;
     }
 
+
+    public void StartClient()
+    {
+        NetworkManager.Singleton.StartClient();
+    }
+
+    public void StartHost()
+    {
+        NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConnectionApprovalCallback;
+        NetworkManager.Singleton.StartHost();
+    }
+
+    public void StartServer()
+    {
+        NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConnectionApprovalCallback;
+        NetworkManager.Singleton.StartServer();
+    }
+
+    /// <summary>
+    /// This is called by the events we setup in the StartHost()/StartServer() methods above. So it only runs on the server.
+    /// </summary>
+    /// <remarks>
+    /// NOTE: This event will not fire unless you enable "Approve Connections" on the NetworkManager object in the game scene.
+    /// </remarks>
+    /// <param name="connectionApprovalRequest"></param>
+    /// <param name="connectionApprovalResponse"></param>
+    private void NetworkManager_ConnectionApprovalCallback(NetworkManager.ConnectionApprovalRequest connectionApprovalRequest, NetworkManager.ConnectionApprovalResponse connectionApprovalResponse)
+    {
+        if (KitchenGameManager.Instance.IsWaitingToStart())
+        {
+            connectionApprovalResponse.Approved = true;
+            connectionApprovalResponse.CreatePlayerObject = true;
+        }
+        else
+        {
+            connectionApprovalResponse.Approved = false;
+        }
+    }
+
     public void SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
     {
         SpawnKitchenObjectServerRpc(GetKitchenObjectSOIndex(kitchenObjectSO), kitchenObjectParent.GetNetworkObject());

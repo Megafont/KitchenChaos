@@ -26,21 +26,21 @@ public class TestingNetcodeUI : MonoBehaviour
     private void OnStartAsClientClicked()
     {
         Debug.Log("STARTED AS CLIENT");
-        NetworkManager.Singleton.StartClient();
+        KitchenGameMultiplayer.Instance.StartClient();
         Hide();
     }
 
     private void OnStartAsHostClicked()
     {
         Debug.Log("STARTED AS HOST");
-        NetworkManager.Singleton.StartHost();
+        KitchenGameMultiplayer.Instance.StartHost();
         Hide();
     }
 
     private void OnStartAsServerClicked()
     {
         Debug.Log("STARTED AS SERVER");
-        NetworkManager.Singleton.StartServer();
+        KitchenGameMultiplayer.Instance.StartServer();
         Hide();
     }
 
