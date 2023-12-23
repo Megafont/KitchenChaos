@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 49167817
+  GlobalObjectIdHash: 643639472
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   _KitchenObjectHoldPoint: {fileID: 4214864978540924858}
+  _PlayerVisual: {fileID: 462663887422352490}
   _SpawnPositionList:
   - {x: -2, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
@@ -328,6 +329,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1998564676564959449}
   m_SourcePrefab: {fileID: 100100000, guid: 1c5dda3c7cd3cf742afcade5419faeab, type: 3}
+--- !u!114 &462663887422352490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1278382060901425090, guid: 1c5dda3c7cd3cf742afcade5419faeab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1717577816984728488}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4210683961327624079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0dc9c27ce315d43aeeb103428cf398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4210683961327624076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3294758251327466532, guid: 1c5dda3c7cd3cf742afcade5419faeab,
