@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class CharacterSelectPlayer : MonoBehaviour
 {
     [SerializeField] private int _PlayerIndex;
+    [SerializeField] private TextMeshPro _PlayerNameText;
     [SerializeField] private GameObject _ReadyText;
     [SerializeField] private PlayerVisual _PlayerVisual;
     [SerializeField] private Button _KickButton;
@@ -39,6 +41,7 @@ public class CharacterSelectPlayer : MonoBehaviour
     private void OnKickClicked()
     {
         PlayerData playerData = KitchenGameMultiplayer.Instance.GetPlayerDataFromPlayerIndex(_PlayerIndex);
+        KitchenGameLobby.Instance.KickPlayer(playerData.PlayerId.ToString());
         KitchenGameMultiplayer.Instance.KickPlayer(playerData.ClientId);
     }
 
@@ -60,6 +63,9 @@ public class CharacterSelectPlayer : MonoBehaviour
 
             PlayerData playerData = KitchenGameMultiplayer.Instance.GetPlayerDataFromPlayerIndex(_PlayerIndex);
             _ReadyText.SetActive(CharacterSelectReady.Instance.IsPlayerReady(playerData.ClientId));
+
+            _PlayerNameText.text = playerData.PlayerName.ToString();
+            //Debug.Log("NAME: " + playerData.PlayerName.ToString() + "    CId: " + playerData.ClientId + "    PId: " + playerData.PlayerId);
 
             _PlayerVisual.SetPlayerColor(KitchenGameMultiplayer.Instance.GetPlayerColor(playerData.ColorIndex));
         }

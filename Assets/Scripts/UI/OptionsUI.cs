@@ -79,6 +79,8 @@ public class OptionsUI : MonoBehaviour
         _GamepadPauseButton.onClick.AddListener(() => { RebindBinding(GameInput.Bindings.Gamepad_Pause); });
 
         _ResetAllBindingsButton.onClick.AddListener(OnResetAllBindingsClicked);
+
+        _CloseButton.Select();
     }
 
     private void Start()

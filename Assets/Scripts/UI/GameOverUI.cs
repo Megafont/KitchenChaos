@@ -17,6 +17,8 @@ public class GameOverUI : MonoBehaviour
     private void Awake()
     {
         _PlayAgainButton.onClick.AddListener(OnPlayAgainClicked);
+
+        _PlayAgainButton.Select();
     }
 
     private void Start()

@@ -79,9 +79,9 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\CuttingRecipeSO.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Utilities\ScrollConflictManager.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
-    <Compile Include="Assets\Scripts\ScriptableObjects\RecipeListSO.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\RangeSlider.cs" />
     <Compile Include="Assets\Scripts\ResetStaticDataManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\RecipeListSO.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Layout\CardUI\2D Cards\CardStack2D.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\UI_Knob.cs" />
     <Compile Include="Assets\Scripts\UI\WaitingForOtherPlayersUI.cs" />
@@ -90,6 +90,7 @@
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Effects\ShaderEffects\UIImageCrop.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\RescalingPanels\ResizePanel.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Utilities\ScrollRectLinker.cs" />
+    <Compile Include="Assets\Scripts\UI\LobbyMessaageUI.cs" />
     <Compile Include="Assets\Scripts\Counters\TrashCounter.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Primitives\UIGridRenderer.cs" />
     <Compile Include="Assets\Scripts\Counters\SelectedCounterVisual.cs" />
@@ -126,7 +127,6 @@
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Effects\UIFlippable.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\ColorPicker\ColorPickerPresets.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\Stepper.cs" />
-    <Compile Include="Assets\Scripts\UI\ConnectionResponseMessaageUI.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\RescalingPanels\RescalePanel.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Effects\CurlyUI\CUIImage.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Layout\FancyScrollView\Scroller\Scroller.cs" />
@@ -197,8 +197,10 @@
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Utilities\ScrollRectExtensions.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\ToolTips\BoundTooltip\BoundTooltipItem.cs" />
     <Compile Include="Assets\Scripts\UI\TestingNetcodeUI.cs" />
+    <Compile Include="Assets\Scripts\UI\LobbyCreateUI.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Utilities\ScrollRectTweener.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\ColorPicker\ColorSampler.cs" />
+    <Compile Include="Assets\Scripts\KitchenGameLobby.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\SegmentedControl.cs" />
     <Compile Include="Assets\Scripts\UI\StoveBurningFlashingBarUI.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Layout\FancyScrollView\Core\FancyScrollView.cs" />
@@ -209,6 +211,7 @@
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Effects\BestFitOutline.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\ColorPicker\ColorLabel.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\ComboBox\DropDownListButton.cs" />
+    <Compile Include="Assets\Scripts\UI\LobbyUI.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Layout\FancyScrollView\ScrollRect\FancyScrollRectContext.cs" />
     <Compile Include="Assets\Scripts\LoaderCallback.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\ComboBox\DropDownList.cs" />
@@ -245,6 +248,7 @@
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\UIWindowBase.cs" />
     <Compile Include="Assets\Scripts\UI\TestingCharacterSelectionUI.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Controls\TextPic.cs" />
+    <Compile Include="Assets\Scripts\UI\LobbyListSingleUI.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\com.unity.uiextensions\Runtime\Scripts\Layout\FancyScrollView\Scroller\EasingCore.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimator.cs" />
@@ -677,12 +681,20 @@
       <HintPath>F:\Unity\2022.3.14f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Library\PackageCache\com.unity.services.wire@1.2.2\Plugins\websocket-sharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
@@ -1193,6 +1205,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Networking.Transport">
       <HintPath>Library\ScriptAssemblies\Unity.Networking.Transport.dll</HintPath>
       <Private>False</Private>
@@ -1229,6 +1245,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.Netcode.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
       <Private>False</Private>
@@ -1251,6 +1271,10 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Analytics">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Recorder">
@@ -1341,8 +1365,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Services.Authentication">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Authentication.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Lobbies">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Lobbies.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Mathematics">
@@ -1353,12 +1385,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Networking.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Networking.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Networking.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Networking.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">

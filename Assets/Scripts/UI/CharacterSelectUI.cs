@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 
 using Unity.Netcode;
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class CharacterSelectUI : MonoBehaviour
 {
     [SerializeField] private Button _MainMenuButton;
     [SerializeField] private Button _ReadyButton;
+    [SerializeField] private TextMeshProUGUI _LobbyNameText;
+    [SerializeField] private TextMeshProUGUI _LobbyCodeText;
 
 
 
@@ -17,10 +21,21 @@ public class CharacterSelectUI : MonoBehaviour
     {
         _MainMenuButton.onClick.AddListener(OnMainMenuClicked);
         _ReadyButton.onClick.AddListener(OnReadyClicked);
+
+        _ReadyButton.Select();
+    }
+
+    private void Start()
+    {
+        Lobby lobby = KitchenGameLobby.Instance.GetLobby();
+
+        _LobbyNameText.text = $"Lobby Name: {lobby.Name}";
+        _LobbyCodeText.text = $"Lobby Code: {lobby.LobbyCode}";
     }
 
     private void OnMainMenuClicked()
     {
+        KitchenGameLobby.Instance.LeaveLobby();
         NetworkManager.Singleton.Shutdown();
         Loader.LoadScene(Loader.Scenes.MainMenuScene);
     }

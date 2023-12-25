@@ -14,6 +14,8 @@ public class HostDisconnectUI : MonoBehaviour
     private void Awake()
     {
         _PlayAgainButton.onClick.AddListener(OnPlayAgainClicked);
+
+        _PlayAgainButton.Select();
     }
 
     private void Start()
@@ -25,7 +27,8 @@ public class HostDisconnectUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        NetworkManager.Singleton.OnClientDisconnectCallback -= NetworkManager_OnClientDisconnectCallback;
+        if (NetworkManager.Singleton != null)
+            NetworkManager.Singleton.OnClientDisconnectCallback -= NetworkManager_OnClientDisconnectCallback;
     }
 
     private void NetworkManager_OnClientDisconnectCallback(ulong clientId)

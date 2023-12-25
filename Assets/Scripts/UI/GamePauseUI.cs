@@ -18,6 +18,8 @@ public class GamePauseUI : MonoBehaviour
         _ResumeButton.onClick.AddListener(OnResumeClicked);
         _OptionsButton.onClick.AddListener(OnOptionsClicked);
         _MainMenuButton.onClick.AddListener(OnMainMenuClicked);
+
+        _ResumeButton.Select();
     }
 
     private void Start()

@@ -21,6 +21,8 @@ public class MainMenuUI : MonoBehaviour
         // This is needed because the GamePauseUI script doesn't reset this value first when the MainMenuButton is clicked.
         // Doing it here instead ensures the player will never see stuff start moving again before the loading screen appears.
         Time.timeScale = 1.0f;
+
+        _PlayButton.Select();
     }
    
     private void PlayClicked()
