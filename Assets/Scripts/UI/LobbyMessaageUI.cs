@@ -90,6 +90,8 @@ public class LobbyMessaageUI : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
+
+        _CloseButton.Select();
     }
 
     private void Hide()

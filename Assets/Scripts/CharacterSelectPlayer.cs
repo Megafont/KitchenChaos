@@ -27,8 +27,8 @@ public class CharacterSelectPlayer : MonoBehaviour
         KitchenGameMultiplayer.Instance.OnPlayerDataNetworkListChanged += KitchenGameMultiplayer_OnPlayerDataNetworkListChanged;
         CharacterSelectReady.Instance.OnReadyChanged += CharacterSelectReady_OnReadyChanged;
 
-        // Show the kick buttons only if this is the host.
-        _KickButton.gameObject.SetActive(NetworkManager.Singleton.IsServer);
+        //_KickButton.gameObject.SetActive(NetworkManager.Singleton.IsServer);
+        UpdateKickButtonState();
         
         UpdatePlayer();
     }
@@ -61,6 +61,8 @@ public class CharacterSelectPlayer : MonoBehaviour
         {
             Show();
 
+            UpdateKickButtonState();
+
             PlayerData playerData = KitchenGameMultiplayer.Instance.GetPlayerDataFromPlayerIndex(_PlayerIndex);
             _ReadyText.SetActive(CharacterSelectReady.Instance.IsPlayerReady(playerData.ClientId));
 
@@ -73,6 +75,29 @@ public class CharacterSelectPlayer : MonoBehaviour
         {
             Hide();
         }
+    }
+
+    private void UpdateKickButtonState()
+    {
+        if (!NetworkManager.Singleton.IsServer)
+        {
+            _KickButton.gameObject.SetActive(false);
+            return;
+        }
+
+
+        // If the index of this player visual is higher than the valid range for the number of players currently in the game, then simply return since we don't need to update the KickButton's state since it will be invisible anyway.
+        if (_PlayerIndex >= NetworkManager.Singleton.ConnectedClientsIds.Count)
+            return;
+
+
+        // Show the kick buttons only if this is player is not the host AND if this code is running on the server.
+        // In other words, if this code is running on the host/server, all players will have the kick button above their heads except the host.
+        // If this code is running on a client, no players will have a kick button, as clients are not allowed to kick players.
+        if (KitchenGameMultiplayer.Instance.GetPlayerDataFromPlayerIndex(_PlayerIndex).PlayerId != KitchenGameMultiplayer.Instance.GetLocalPlayerData().PlayerId)
+            _KickButton.gameObject.SetActive(NetworkManager.Singleton.IsServer);
+        else
+            _KickButton.gameObject.SetActive(false);
     }
 
     private void Show()

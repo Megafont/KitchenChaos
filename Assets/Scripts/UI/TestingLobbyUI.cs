@@ -15,6 +15,8 @@ public class TestingLobbyUI : MonoBehaviour
     {
         _CreateGameButton.onClick.AddListener(OnCreateGameClicked);
         _JoinGameButton.onClick.AddListener(OnJoinButtonClicked);
+
+        _CreateGameButton.Select();
     }
 
     private void OnCreateGameClicked()

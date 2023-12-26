@@ -13,6 +13,8 @@ public class TestingCharacterSelectionUI : MonoBehaviour
     private void Awake()
     {
         _ReadyButton.onClick.AddListener(OnReadyClicked);
+
+        _ReadyButton.Select();
     }
 
     private void OnReadyClicked()

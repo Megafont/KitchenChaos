@@ -49,6 +49,8 @@ public class HostDisconnectUI : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
+
+        _PlayAgainButton.Select();
     }
 
     private void Hide()
