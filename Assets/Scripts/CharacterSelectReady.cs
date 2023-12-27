@@ -59,7 +59,6 @@ public class CharacterSelectReady : NetworkBehaviour
     [ClientRpc]
     private void TogglePlayerReadyClientRpc(ulong clientId, bool isReady)
     {
-        Debug.Log("AAAAA: " + isReady);
         _PlayerReadyDictionary[clientId] = isReady;
 
         OnReadyChanged?.Invoke(this, EventArgs.Empty);

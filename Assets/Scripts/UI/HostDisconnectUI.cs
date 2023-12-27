@@ -55,10 +55,6 @@ public class HostDisconnectUI : MonoBehaviour
 
     private void Hide()
     {
-        if (_ParentUI == null)
-            Debug.Log("NULL");
-
-
         _ParentUI?.SelectDefaultButton();
 
         gameObject.SetActive(false);        
