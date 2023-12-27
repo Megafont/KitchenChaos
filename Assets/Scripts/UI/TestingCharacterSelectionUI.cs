@@ -19,6 +19,6 @@ public class TestingCharacterSelectionUI : MonoBehaviour
 
     private void OnReadyClicked()
     {
-        CharacterSelectReady.Instance.SetPlayerReady();
+        CharacterSelectReady.Instance.TogglePlayerReady();
     }
 }

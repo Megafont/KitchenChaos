@@ -17,6 +17,7 @@ public class CharacterSelectReady : NetworkBehaviour
     private Dictionary<ulong, bool> _PlayerReadyDictionary;
 
 
+
     private void Awake()
     {
         Instance = this;
@@ -24,21 +25,23 @@ public class CharacterSelectReady : NetworkBehaviour
         _PlayerReadyDictionary = new Dictionary<ulong, bool>();
     }
 
-    public void SetPlayerReady()
+    public void TogglePlayerReady()
     {
-        SetPlayerReadyServerRpc();
+        TogglePlayerReadyServerRpc();
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void SetPlayerReadyServerRpc(ServerRpcParams serverRpcParams = default)
+    private void TogglePlayerReadyServerRpc(ServerRpcParams serverRpcParams = default)
     {
-        SetPlayerReadyClientRpc(serverRpcParams.Receive.SenderClientId);
-        _PlayerReadyDictionary[serverRpcParams.Receive.SenderClientId] = true;
+        ulong clientId = serverRpcParams.Receive.SenderClientId;
+
+        _PlayerReadyDictionary[clientId] = !IsPlayerReady(clientId);
+        TogglePlayerReadyClientRpc(clientId, _PlayerReadyDictionary[clientId]);
 
         bool allClientsReady = true;
-        foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+        foreach (ulong curClientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
-            if (!_PlayerReadyDictionary.ContainsKey(clientId) || !_PlayerReadyDictionary[clientId])
+            if (!_PlayerReadyDictionary.ContainsKey(curClientId) || !_PlayerReadyDictionary[curClientId])
             {
                 // This player is NOT ready
                 allClientsReady = false;
@@ -54,9 +57,10 @@ public class CharacterSelectReady : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void SetPlayerReadyClientRpc(ulong clientId)
+    private void TogglePlayerReadyClientRpc(ulong clientId, bool isReady)
     {
-        _PlayerReadyDictionary[clientId] = true;
+        Debug.Log("AAAAA: " + isReady);
+        _PlayerReadyDictionary[clientId] = isReady;
 
         OnReadyChanged?.Invoke(this, EventArgs.Empty);
     }

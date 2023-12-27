@@ -15,6 +15,8 @@ public class CharacterSelectUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _LobbyNameText;
     [SerializeField] private TextMeshProUGUI _LobbyCodeText;
 
+    private TextMeshProUGUI _ReadyButtonText;
+
 
 
     private void Awake()
@@ -23,6 +25,7 @@ public class CharacterSelectUI : MonoBehaviour
         _ReadyButton.onClick.AddListener(OnReadyClicked);
 
         _ReadyButton.Select();
+        _ReadyButtonText = _ReadyButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Start()
@@ -50,6 +53,14 @@ public class CharacterSelectUI : MonoBehaviour
 
     private void OnReadyClicked()
     {
-        CharacterSelectReady.Instance.SetPlayerReady();
+        CharacterSelectReady.Instance.TogglePlayerReady();
+
+        _ReadyButtonText.text = _ReadyButtonText.text == "READY" ? "UNREADY" : "READY";
+
+    }
+
+    public void SelectDefaultButton()
+    {
+        _ReadyButton.Select();
     }
 }

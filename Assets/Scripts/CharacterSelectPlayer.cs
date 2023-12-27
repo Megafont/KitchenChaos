@@ -57,6 +57,7 @@ public class CharacterSelectPlayer : MonoBehaviour
 
     private void UpdatePlayer()
     {
+        Debug.Log("!!!!!!!!!!!!!!");
         if (KitchenGameMultiplayer.Instance.IsPlayerConnected(_PlayerIndex))
         {
             Show();

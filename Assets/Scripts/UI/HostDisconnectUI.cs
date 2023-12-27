@@ -9,13 +9,13 @@ using UnityEngine.UI;
 public class HostDisconnectUI : MonoBehaviour
 {
     [SerializeField] private Button _PlayAgainButton;
+    [SerializeField] private CharacterSelectUI _ParentUI;
+
 
 
     private void Awake()
     {
         _PlayAgainButton.onClick.AddListener(OnPlayAgainClicked);
-
-        _PlayAgainButton.Select();
     }
 
     private void Start()
@@ -55,8 +55,12 @@ public class HostDisconnectUI : MonoBehaviour
 
     private void Hide()
     {
-        gameObject.SetActive(false);
+        if (_ParentUI == null)
+            Debug.Log("NULL");
 
-        _PlayAgainButton.Select();
+
+        _ParentUI?.SelectDefaultButton();
+
+        gameObject.SetActive(false);        
     }
 }
